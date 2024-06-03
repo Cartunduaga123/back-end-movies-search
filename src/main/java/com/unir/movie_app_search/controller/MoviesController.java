@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collections;
@@ -25,7 +26,7 @@ public class MoviesController {
 
     @GetMapping("/peliculas")
     @Operation(
-            operationId = "Obtener productos",
+            operationId = "Obtener peliculas",
             description = "Operacion de lectura",
             summary = "Se devuelve una lista de todos las peliculas almacenados en la base de datos.")
     @ApiResponse(
@@ -36,6 +37,16 @@ public class MoviesController {
         return ResponseEntity.ok(Objects.requireNonNullElse(movies, Collections.emptyList()));
     }
 
-
+    @GetMapping("/peliculas/{idMovie}")
+    @Operation(
+            operationId = "Obtener pelicula por id",
+            description = "Operacion de lectura",
+            summary = "Se devuelve una pelicula almacenada en la base de datos.")
+    @ApiResponse(
+            responseCode = "200",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = MovieEntity.class)))
+    public ResponseEntity<MovieEntity> get(@PathVariable int idMovie) {
+        return ResponseEntity.ok(this.movieService.get(idMovie));
+    }
 
 }

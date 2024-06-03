@@ -1,6 +1,7 @@
 package com.unir.movie_app_search.service;
 
 import com.unir.movie_app_search.persistence.entity.MovieEntity;
+import com.unir.movie_app_search.persistence.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -11,15 +12,19 @@ import java.util.List;
 @Service
 public class MovieService {
 
-    private final JdbcTemplate jdbcTemplate;
+    private final MovieRepository movieRepository;
 
     @Autowired
-    public MovieService(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
+    public MovieService(MovieRepository movieRepository) {
+        this.movieRepository = movieRepository;
     }
 
     public List<MovieEntity> getAll() {
-        return this.jdbcTemplate.query("SELECT * FROM peliculas", new BeanPropertyRowMapper<>(MovieEntity.class));
+        return this.movieRepository.findAll();
+    }
+
+    public MovieEntity get(int idPizza) {
+        return this.movieRepository.findById(idPizza).orElse(null);
     }
 
 }
