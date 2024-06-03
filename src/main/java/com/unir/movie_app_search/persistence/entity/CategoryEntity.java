@@ -1,11 +1,11 @@
 package com.unir.movie_app_search.persistence.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -20,9 +20,10 @@ public class CategoryEntity {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(nullable = false, length = 100)
-    private String name;
+    @Column(name = "nombre", nullable = false, length = 100)
+    private String nombre;
 
     @OneToMany(mappedBy = "categoria")
-    private List<MovieCategoryEntity> peliculaCategorias;
+    @JsonIgnore
+    private Set<MovieCategoryEntity> peliculaCategorias;
 }
