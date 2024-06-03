@@ -9,9 +9,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
 import java.util.List;
@@ -47,6 +45,33 @@ public class MoviesController {
             content = @Content(mediaType = "application/json", schema = @Schema(implementation = MovieEntity.class)))
     public ResponseEntity<MovieEntity> get(@PathVariable int idMovie) {
         return ResponseEntity.ok(this.movieService.get(idMovie));
+    }
+
+    @PostMapping("/peliculas")
+    public ResponseEntity<MovieEntity> add(@RequestBody MovieEntity movie) {
+        if (movie.getId() == null || !this.movieService.exists(movie.getId())) {
+            return ResponseEntity.ok(this.movieService.save(movie));
+        }
+        return ResponseEntity.badRequest().build();
+    }
+
+    @PutMapping("/peliculas/{id}")
+    public ResponseEntity<MovieEntity> update(@PathVariable Integer id, @RequestBody MovieEntity movie) {
+        if (id != null && movieService.exists(id)) {
+            movie.setId(id);
+            return ResponseEntity.ok(movieService.save(movie));
+        }
+        return ResponseEntity.badRequest().build();
+    }
+
+    @DeleteMapping("/peliculas/{idMovie}")
+    public ResponseEntity<Void> delete(@PathVariable int idMovie) {
+        if (this.movieService.exists(idMovie)) {
+            this.movieService.delete(idMovie);
+            return ResponseEntity.ok().build();
+        }
+
+        return ResponseEntity.badRequest().build();
     }
 
 }
