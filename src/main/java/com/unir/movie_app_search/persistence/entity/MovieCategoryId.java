@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class MovieCategoryId implements Serializable {
-
     private final Integer idMovie;
     private final Integer idCategory;
 

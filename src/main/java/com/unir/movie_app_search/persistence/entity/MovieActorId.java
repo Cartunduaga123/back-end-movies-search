@@ -11,8 +11,9 @@ import java.util.Objects;
 @Setter
 @NoArgsConstructor
 public class MovieActorId implements Serializable {
-    private int idMovie;
-    private int idActor;
+
+    private Integer idMovie;
+    private Integer idActor;
 
     public MovieActorId (Integer idMovie, Integer idActor) {
         this.idMovie = idMovie;

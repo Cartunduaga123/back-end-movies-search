@@ -27,4 +27,17 @@ public class MovieService {
         return this.movieRepository.findById(idPizza).orElse(null);
     }
 
+    public void save(MovieEntity movieEntity) {
+        this.movieRepository.save(movieEntity);
+    }
+
+    public void delete(int idPizza) {
+        this.movieRepository.deleteById(idPizza);
+    }
+
+/*    public List<MovieEntity> getByTitle(String title) {
+        //this.movieRepository.findAll().contains( )
+    }*/
+
+
 }

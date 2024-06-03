@@ -15,11 +15,11 @@ public class MovieActorEntity {
 
     @Id
     @Column(name = "pelicula_id", nullable = false)
-    private Integer movieId;
+    private Integer idMovie;
 
     @Id
     @Column(name = "actor_id", nullable = false)
-    private Integer actorId;
+    private Integer idActor;
 
     @ManyToOne
     @JoinColumn(name = "pelicula_id", referencedColumnName = "id", insertable = false, updatable = false)
