@@ -38,5 +38,4 @@ public class MovieService {
         return this.movieRepository.existsById(idMovie);
     }
 
-
 }

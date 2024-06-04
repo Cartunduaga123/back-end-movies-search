@@ -70,7 +70,6 @@ public class MoviesController {
             this.movieService.delete(idMovie);
             return ResponseEntity.ok().build();
         }
-
         return ResponseEntity.badRequest().build();
     }
 
