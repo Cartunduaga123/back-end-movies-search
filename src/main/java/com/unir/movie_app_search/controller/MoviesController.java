@@ -34,25 +34,25 @@ public class MoviesController {
             content = @Content(mediaType = "application/json", schema = @Schema(implementation = MovieEntity.class)))
     public ResponseEntity<List<MovieEntity>> getAll(
             @RequestHeader Map<String, String> headers,
-            @Parameter(name = "name", description = "Nombre de la pelicula. No tiene por que ser exacto", example = "matrix", required = false)
+            @Parameter(name = "nombre", description = "Nombre de la pelicula. No tiene por que ser exacto", example = "matrix", required = false)
             @RequestParam(required = false) String nombre,
-            @Parameter(name = "name", description = "Nombre del director. No tiene por que ser exacto", example = "jhon", required = false)
+            @Parameter(name = "director", description = "Nombre del director. No tiene por que ser exacto", example = "jhon", required = false)
             @RequestParam(required = false) String director,
-            @Parameter(name = "name", description = "Año de publicación. Año valido", example = "2022", required = false)
+            @Parameter(name = "anoPublicacion", description = "Año de publicación. Año valido", example = "2022", required = false)
             @RequestParam(required = false) Integer anoPublicacion,
-            @Parameter(name = "name", description = "Descripscion de la pelicula. No tiene por que ser exacto", example = "Era se una vez", required = false)
+            @Parameter(name = "sinopsis", description = "Descripscion de la pelicula. No tiene por que ser exacto", example = "Era se una vez", required = false)
             @RequestParam(required = false) String sinopsis,
-            @Parameter(name = "name", description = "Critica. No tiene por que ser exacto", example = "Buena", required = false)
+            @Parameter(name = "criticas", description = "Critica. No tiene por que ser exacto", example = "Buena", required = false)
             @RequestParam(required = false) String criticas,
-            @Parameter(name = "name", description = "Valor en minutos. No tiene por que ser exacto", example = "60", required = false)
+            @Parameter(name = "duracion", description = "Valor en minutos. No tiene por que ser exacto", example = "60", required = false)
             @RequestParam(required = false) Integer duracion,
-            @Parameter(name = "name", description = "Puntuacion. No tiene por que ser exacto", example = "10", required = false)
+            @Parameter(name = "puntuacion", description = "Puntuacion. No tiene por que ser exacto", example = "10", required = false)
             @RequestParam(required = false) Integer puntuacion,
-            @Parameter(name = "name", description = "Lenguaje. No tiene por que ser exacto", example = "Español", required = false)
+            @Parameter(name = "lenguaje", description = "Lenguaje. No tiene por que ser exacto", example = "Español", required = false)
             @RequestParam(required = false) String lenguaje,
-            @Parameter(name = "name", description = "Precio compra. No tiene por que ser exacto", example = "8.50", required = false)
+            @Parameter(name = "precio", description = "Precio compra. No tiene por que ser exacto", example = "8.50", required = false)
             @RequestParam(required = false) Double precio,
-            @Parameter(name = "name", description = "Precio renta. No tiene por que ser exacto", example = "4.50", required = false)
+            @Parameter(name = "precioRenta", description = "Precio renta. No tiene por que ser exacto", example = "4.50", required = false)
             @RequestParam(required = false) Double precioRenta
     ) {
         List<MovieEntity> movies = movieService.getAll(nombre, director, anoPublicacion, sinopsis, criticas, duracion, puntuacion, lenguaje, precio, precioRenta);
