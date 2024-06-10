@@ -18,7 +18,7 @@ public class MovieService {
     }
 
     public List<MovieEntity> getAll(String nombre, String director, Integer anoPublicacion, String sinopsis, String criticas, Integer duracion, Integer puntuacion, String lenguaje, Double precio, Double precioRenta) {
-        return movieRepository.findMoviesByFilter(nombre, director, anoPublicacion, sinopsis, criticas, duracion, puntuacion, lenguaje, precio, precioRenta);
+        return movieRepository.findMovies(nombre, director, anoPublicacion, sinopsis, criticas, duracion, puntuacion, lenguaje, precio, precioRenta);
     }
 
     public MovieEntity get(int idMovie) {
