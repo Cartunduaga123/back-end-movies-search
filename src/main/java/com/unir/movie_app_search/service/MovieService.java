@@ -2,6 +2,7 @@ package com.unir.movie_app_search.service;
 
 import com.unir.movie_app_search.persistence.entity.MovieEntity;
 import com.unir.movie_app_search.persistence.repository.MovieRepository;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

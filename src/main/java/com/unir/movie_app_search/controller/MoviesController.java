@@ -73,4 +73,17 @@ public class MoviesController {
         return ResponseEntity.badRequest().build();
     }
 
+    @GetMapping("/peliculas/exist/{idMovie}")
+    @Operation(
+            operationId = "Obtener pelicula por id",
+            description = "Operacion de lectura",
+            summary = "Se devuelve una pelicula almacenada en la base de datos.")
+    @ApiResponse(
+            responseCode = "200",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = MovieEntity.class)))
+    public ResponseEntity<Boolean> exist(@PathVariable int idMovie) {
+        return ResponseEntity.ok(this.movieService.exists(idMovie));
+    }
+
+
 }
